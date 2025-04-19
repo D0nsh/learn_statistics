@@ -37,6 +37,27 @@ The repository is organized as follows:
 *   **`requirements.txt`**: Lists the necessary Python libraries to run the code.
 *   **`README.md`**: Provides an overview of the repository.
 
+
+
+**Available Notebooks:**
+
+- **monte_carlo_pi.ipynb**  
+  Monte Carlo estimation of π by simulating random points in a unit square and counting how many fall inside a quarter circle. Includes code, parameter setup, simulation, convergence plots, and error analysis.
+
+- **mcmc_gibbs.ipynb**  
+  Gibbs sampling for a bivariate normal distribution. Includes parameter setup, running the sampler, trace plots, joint distribution visualization, and comparison of sample statistics to theoretical values.
+
+- **mcmc_metropolis.ipynb**  
+  Metropolis algorithm for sampling from a 1D distribution with an unnormalized density. Visualizes trace plots, sample histograms, target density, and convergence of the sample mean.
+
+- **monte_carlo_integral.ipynb**  
+  Monte Carlo integration to estimate the definite integral of a function (e.g., ∫x² dx from 0 to 1). Includes simulation, comparison with the exact value, convergence plots, and error visualization.
+
+- **monte_carlo_option_pricing.ipynb**  
+  Monte Carlo simulation to estimate the price of a European call option and compare it to the Black-Scholes analytical price. Visualizes convergence and absolute error.
+
+To run a notebook, open it in JupyterLab or VS Code and execute the cells interactively.
+
 ## Getting Started
 
 ### Prerequisites
