@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.stats import norm # Keep for black_scholes comparison if needed later
 
 def monte_carlo_option_price(S0, K, T, r, sigma, num_simulations, num_steps):
     """Estimates European call option price using Monte Carlo."""
@@ -33,31 +34,11 @@ def monte_carlo_option_price(S0, K, T, r, sigma, num_simulations, num_steps):
 
     return option_price
 
-# --- Example Parameters ---
-S0 = 100      # Initial stock price
-K = 105       # Strike price
-T = 1.0       # Time to expiry (1 year)
-r = 0.05      # Risk-free rate (5%)
-sigma = 0.2   # Volatility (20%)
-N_sim = 100000 # Number of simulations (paths)
-M_steps = 100  # Number of time steps
-
-# --- Run the simulation ---
-estimated_price = monte_carlo_option_price(S0, K, T, r, sigma, N_sim, M_steps)
-
-# Compare with Black-Scholes analytical solution (optional)
-from scipy.stats import norm
 def black_scholes_call(S, K, T, r, sigma):
+    """Calculates European call option price using Black-Scholes formula."""
     d1 = (np.log(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * np.sqrt(T))
     d2 = d1 - sigma * np.sqrt(T)
     call_price = (S * norm.cdf(d1) - K * np.exp(-r * T) * norm.cdf(d2))
     return call_price
 
-bs_price = black_scholes_call(S0, K, T, r, sigma)
-
-print(f"Simulation Parameters:")
-print(f"  S0={S0}, K={K}, T={T}, r={r}, sigma={sigma}")
-print(f"  Num Simulations={N_sim}, Num Steps={M_steps}")
-print(f"Monte Carlo Estimated Call Price: {estimated_price:.4f}")
-print(f"Black-Scholes Analytical Price: {bs_price:.4f}")
-print(f"Difference: {abs(estimated_price - bs_price):.4f}")
+# --- Removed example parameters and simulation execution ---

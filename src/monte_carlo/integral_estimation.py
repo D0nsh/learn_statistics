@@ -19,16 +19,4 @@ def estimate_integral(func, a, b, num_samples):
     integral_estimate = (b - a) * sample_mean
     return integral_estimate
 
-# --- Run the simulation ---
-a = 0
-b = 1
-num_samples_integral = 10000000
-estimated_integral = estimate_integral(g, a, b, num_samples_integral)
-analytical_result = 1/3
-
-print(f"Function: x^2")
-print(f"Interval: [{a}, {b}]")
-print(f"Number of samples: {num_samples_integral}")
-print(f"Estimated integral: {estimated_integral}")
-print(f"Analytical result: {analytical_result}")
-print(f"Error: {abs(estimated_integral - analytical_result)}")
+# --- Removed simulation execution code ---

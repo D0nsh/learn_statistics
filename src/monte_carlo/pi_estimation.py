@@ -20,11 +20,4 @@ def estimate_pi(num_points):
     pi_estimate = 4 * (points_inside_circle / total_points)
     return pi_estimate
 
-# --- Run the simulation ---
-num_samples = 1000000 # Increase for better accuracy
-estimated_pi = estimate_pi(num_samples)
-
-print(f"Number of samples: {num_samples}")
-print(f"Estimated value of pi: {estimated_pi}")
-print(f"Actual value of pi: {math.pi}")
-print(f"Error: {abs(estimated_pi - math.pi)}")
+# --- Removed simulation execution code ---

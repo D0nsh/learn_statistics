@@ -1,6 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as plt
-from scipy.integrate import quad
+# Removed matplotlib and scipy.integrate imports as they are moved to examples
 
 def target_pdf_unnormalized(x):
   """Unnormalized target density function: exp(-x^4)"""
@@ -59,44 +58,4 @@ def metropolis_sampler(target_func_unnorm, proposal_std, num_samples, burn_in):
     acceptance_rate = accepted_count / num_samples
     return final_samples, acceptance_rate
 
-# --- MCMC Parameters ---
-proposal_sd = 0.5   # Tune this parameter!
-total_samples_mh = 50000
-burn_in_period_mh = 5000
-
-# --- Run the Metropolis Sampler ---
-mcmc_samples_mh, acceptance_rate_mh = metropolis_sampler(target_pdf_unnormalized,
-                                                         proposal_sd,
-                                                         total_samples_mh,
-                                                         burn_in_period_mh)
-
-print(f"Metropolis Acceptance Rate: {acceptance_rate_mh:.3f} (aim for ~0.2-0.5)")
-
-# --- Plotting ---
-plt.figure(figsize=(12, 6))
-
-# Plot Histogram of samples vs True PDF (normalized)
-plt.subplot(1, 2, 1)
-plt.hist(mcmc_samples_mh, bins=50, density=True, alpha=0.7, label='MCMC Samples')
-
-# Calculate the normalizing constant Z = ∫ exp(-x^4) dx
-Z, _ = quad(target_pdf_unnormalized, -np.inf, np.inf)
-print(f"Normalizing constant Z = {Z:.4f}")
-
-x_vals = np.linspace(min(mcmc_samples_mh), max(mcmc_samples_mh), 200)
-true_pdf = target_pdf_unnormalized(x_vals) / Z
-plt.plot(x_vals, true_pdf, 'r-', lw=2, label='True PDF (normalized)')
-plt.title('Metropolis Samples vs True PDF')
-plt.xlabel('x')
-plt.ylabel('Density')
-plt.legend()
-
-# Plot trace plot
-plt.subplot(1, 2, 2)
-plt.plot(mcmc_samples_mh, lw=0.5)
-plt.title('Trace Plot')
-plt.xlabel('Iteration (post burn-in)')
-plt.ylabel('Sampled Value')
-
-plt.tight_layout()
-plt.show()
+# --- Removed parameter definitions, execution, and plotting ---
